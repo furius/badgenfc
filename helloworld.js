@@ -91,6 +91,13 @@ function writeTable() {
 function writeTimbrature(timbList) {
 	document.write('<table border="1" cellspacing="1" cellpadding="5">')
 	console.debug ("timbList.lenght=" + timbList.length);
+	   document.write('<tr>')
+	   document.write('<td><b>name</td>')
+	   document.write('<td><b>action</td>')
+	   document.write('<td><b>date</td>')
+	   document.write('<td><b>time</td>')
+	   document.write('<td><b>gps</td>')
+	   document.write('</tr>')
 	for(i = 0; i < timbList.length; i++){
 		console.debug (i);
 		var row = timbList[i];
