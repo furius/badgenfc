@@ -1,4 +1,4 @@
-function getTimbrature(gname,gpwd) {
+function getTimbrature(gname) {
 	console.debug("enter getTimbrature")
 	var Timbratura = StackMob.Model.extend({ schemaName: 'timbraturaonline' });
 	var Timbrature = StackMob.Collection.extend({ model: Timbratura });
@@ -27,6 +27,31 @@ function getTimbrature(gname,gpwd) {
 
 }
 
+function checkGroup(gname,gpwd) {
+	var Group = StackMob.Model.extend({ schemaName: 'group' });
+	var Groups = StackMob.Collection.extend({ model: Group });
+	var myGroups = new Groups();
+	var q = new StackMob.Collection.Query();
+	q.equals('name', gname);
+	myGroups.query(q, {
+		success: function(model) {
+			
+			var myJSONGroup = model.toJSON();
+			console.debug(myJSONGroup);
+			if (myJSONGroup[0].password==gpwd) {
+				getTimbrature(gname);
+			} else {
+				document.getElementById("error").innerHTML = "Wrong name or password!";
+			}
+			//document.getElementById("hello").innerHTML = mygJSON.action;
+			//writeTable();
+		},
+		error: function(model, response) {
+			console.debug(response);
+			document.getElementById("error").innerHTML = "Error on query! Try again later ...";
+			
+	}});
+}
 
 
 function start() {
@@ -87,6 +112,6 @@ function writeTimbrature(timbList) {
 function validate(){
 	var gname = document.getElementById('gname').value;
 	var gpwd = document.getElementById('gpwd').value;
+	checkGroup(gname, gpwd);
 	
-	getTimbrature(gname, gpwd);
 }
