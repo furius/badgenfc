@@ -1,43 +1,10 @@
-function hello() {
-	console.debug("enter hello");
-	var Group = StackMob.Model.extend({ schemaName: 'group' });
-	var Groups = StackMob.Collection.extend({ model: Group });
-	var myGroups = new Groups();
-	var q = new StackMob.Collection.Query();
-	q.equals('name', 'walvoil');
-	console.debug("after q.equals");
-	var esito="not evaluated";
-	myGroups.query(q, {
-		success: function(model) {
-			
-			var mygJSON = model.toJSON()[0];
-			console.debug(mygJSON);
-			
-			esito="ok";
-			document.getElementById("hello").innerHTML = mygJSON.name;
-			writeTable();
-	},
-		error: function(model, response) {
-			console.debug(response);
-			esito="error";
-			document.getElementById("hello").innerHTML = esito
-	}});
-//	var time=0;
-//	while (esito == "not evaluated") {
-//		time = time + 1;
-//		console.debug(time);	
-//		sleep(100);
-//	};
-	;
-}
-
-function getTimbrature() {
+function getTimbrature(gname,gpwd) {
 	console.debug("enter getTimbrature")
 	var Timbratura = StackMob.Model.extend({ schemaName: 'timbraturaonline' });
 	var Timbrature = StackMob.Collection.extend({ model: Timbratura });
 	var myTimbrature = new Timbrature();
 	var q = new StackMob.Collection.Query();
-	q.equals('group_name', 'walvoil');
+	q.equals('group_name', gname);
 	console.debug("after q.equals");
 	var esito="not evaluated";
 	myTimbrature.query(q, {
@@ -63,7 +30,8 @@ function getTimbrature() {
 
 
 function start() {
-	document.getElementById('click').onclick = getTimbrature;
+	//document.getElementById('click').onclick = getTimbrature;
+	document.getElementById('login').onclick = validate;
 }
 window.onload = start;
 
@@ -74,41 +42,51 @@ function sleep(ms)
 	while (new Date().getTime() < dt.getTime());
 }
 
-function writeTable() {
-	document.write('<table border="1" cellspacing="1" cellpadding="5">')
+function writeTimbrature(timbList) {
+    var newPage = "<html><head><title>Results</title>";
+	newPage += '<link rel="stylesheet" href="mystyle.css">'
+    newPage += "</head><body>";
+    newPage += "<h3>Check-in check-out table</h3>";
+	
+	//newPage += '<table border="1" cellspacing="1" cellpadding="5">';
+	newPage += '<table>';
+	newPage += '<tr>';
+	newPage += '<th><b>name</th>';
+	newPage += '<th><b>action</th>';
+	newPage += '<th><b>date</th>';
+	newPage += '<th><b>time</th>';
+	newPage += '<th><b>gps</th>';
+	newPage += '</tr>';
+		for(i = 0; i < timbList.length; i++){
+			console.debug (i);
+			var row = timbList[i];
+		   newPage +='<tr>'
+		   newPage +='<td>' + row.name + '</td>'
+		   newPage +='<td>' + row.action + '</td>'
+		   newPage +='<td>' + row.date + '</td>'
+		   newPage +='<td>' + row.time + '</td>'
+		   newPage +='<td>' + row.gps + '</td>'
+		   newPage +='</tr>'
+		}
 
-	for(i = 0; i < 5; i++){
-	   document.write('<tr>')
-	   document.write('<td>row ' + i + ', column 0</td>')
-	   document.write('<td>row ' + i + ', column 1</td>')
-	   document.write('<td>row ' + i + ', column 2</td>')
-	   document.write('</tr>')
-	}
 
-	//document.write('</table>')
+	   newPage += '</table>';
+	
+	
+	
+    newPage += "</body></html>";
+    // write it in one blast
+    document.write(newPage);
+    // close writing stream
+    document.close( );
+
+
 }
 
-function writeTimbrature(timbList) {
-	document.write('<table border="1" cellspacing="1" cellpadding="5">')
-	console.debug ("timbList.lenght=" + timbList.length);
-	   document.write('<tr>')
-	   document.write('<td><b>name</td>')
-	   document.write('<td><b>action</td>')
-	   document.write('<td><b>date</td>')
-	   document.write('<td><b>time</td>')
-	   document.write('<td><b>gps</td>')
-	   document.write('</tr>')
-	for(i = 0; i < timbList.length; i++){
-		console.debug (i);
-		var row = timbList[i];
-	   document.write('<tr>')
-	   document.write('<td>' + row.name + '</td>')
-	   document.write('<td>' + row.action + '</td>')
-	   document.write('<td>' + row.date + '</td>')
-	   document.write('<td>' + row.time + '</td>')
-	   document.write('<td>' + row.gps + '</td>')
-	   document.write('</tr>')
-	}
 
-	document.write('</table>')
+function validate(){
+	var gname = document.getElementById('gname').value;
+	var gpwd = document.getElementById('gpwd').value;
+	
+	getTimbrature(gname, gpwd);
 }

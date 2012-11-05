@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="helloworld.js"></script>
+		<link rel="stylesheet" href="mystyle.css">
 				<!--
 		*************************************
 		STACKMOB JS SDK DEPENDENCIES
@@ -33,8 +34,13 @@
 		
 	</head>
 	<body>
-		<p id="click">Click Here.</p>
-		<p id="hello"></p>
+		<div class="container">
+		<form>
+			<label>GROUP NAME:</label><input type="text" id="gname" name="groupname"><br />
+			<label>GROUP PASSWORD:</label><input type="text" id="gpwd" name="pword"><br />
+		</form>
+		</div>
+		<p><input type="button" id="login" value="Login" name="Submit"></p>
 	</body>
 </html>
 
