@@ -57,6 +57,7 @@ function checkGroup(gname,gpwd) {
 function start() {
 	//document.getElementById('click').onclick = getTimbrature;
 	document.getElementById('login').onclick = validate;
+	
 }
 window.onload = start;
 
@@ -90,22 +91,22 @@ function writeTimbrature(timbList) {
 		   newPage +='<td>' + row.action + '</td>'
 		   newPage +='<td>' + row.date + '</td>'
 		   newPage +='<td>' + row.time + '</td>'
-		   newPage +='<td>' + row.gps + '</td>'
+		   //newPage +='<td>' + row.gps '</td>'
+		   //<a target="_blank" href="http://www.html.it">visita HTML.IT</a>
+		   if (row.gps != "-") {
+			newPage +='<td><a target="_blank" href="test_map.html?gps=' + row.gps + '">' + row.gps + '</a></td>';
+		   } 
+		   else {
+			newPage +='<td>' + row.gps + '</td>';
+		   }
 		   newPage +='</tr>'
 		}
-
-
 	   newPage += '</table>';
-	
-	
-	
     newPage += "</body></html>";
     // write it in one blast
     document.write(newPage);
     // close writing stream
     document.close( );
-
-
 }
 
 
@@ -115,3 +116,4 @@ function validate(){
 	checkGroup(gname, gpwd);
 	
 }
+
