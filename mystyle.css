@@ -1,11 +1,10 @@
 body {
-  padding-left: 11em;
+  
   font-family: Georgia, Verdana,
         Times, serif;
-  color: purple;
-  background-image: url("res/badgenfc_icon.png");
-  background-position: 0% 10%;
-  background-repeat: no-repeat;
+	color: purple;
+	background-color:grey; 
+
 }
 ul.navbar {
   list-style-type: none;
@@ -34,7 +33,7 @@ address {
   padding-top: 1em;
   border-top: thin dotted }
  table {
-  margin-left: -4%;
+  margin-left: 4%;
   font-family: sans-serif;
   background: white;
   border-color: white;
@@ -49,3 +48,13 @@ td { font-family: sans-serif; background: rgb(209,238,238) }
         width: 100%;
         clear: both;
     }
+.myframe {
+
+ border: 5px solid darkblue; 
+ background-color: #cccccc; 
+ font-family: verdana; 
+ font-size: 11px; 
+ color: blue; 
+ padding: 5px; 
+ line-height: 90%;
+}

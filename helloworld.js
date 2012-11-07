@@ -72,6 +72,8 @@ function writeTimbrature(timbList) {
     var newPage = "<html><head><title>Results</title>";
 	newPage += '<link rel="stylesheet" href="mystyle.css">'
     newPage += "</head><body>";
+	newPage += '<div class="myframe">';
+	newPage +='<img src="res/badgenfc_icon.png" style="float:left; margin:5px;">';
     newPage += "<h3>Check-in check-out table</h3>";
 	
 	//newPage += '<table border="1" cellspacing="1" cellpadding="5">';
@@ -102,6 +104,7 @@ function writeTimbrature(timbList) {
 		   newPage +='</tr>'
 		}
 	   newPage += '</table>';
+	   newPage += '</div>';
     newPage += "</body></html>";
     // write it in one blast
     document.write(newPage);
