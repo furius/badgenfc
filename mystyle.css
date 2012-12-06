@@ -1,10 +1,13 @@
 body {
-  
   font-family: Georgia, Verdana,
         Times, serif;
 	color: purple;
 	background-color:grey; 
+  height:100%;
 
+}
+html {
+  height:100%;
 }
 ul.navbar {
   list-style-type: none;
@@ -49,12 +52,15 @@ td { font-family: sans-serif; background: rgb(209,238,238) }
         clear: both;
     }
 .myframe {
-
- border: 5px solid darkblue; 
- background-color: #cccccc; 
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1000;
+ background-color: #FFFFFF; 
  font-family: verdana; 
  font-size: 11px; 
  color: blue; 
- padding: 5px; 
- line-height: 90%;
+  padding: 5px; 
+	height:100%;
 }
