@@ -57,10 +57,10 @@ td { font-family: sans-serif; background: rgb(209,238,238) }
     right: 0px;
     bottom: 0px;
     z-index: 1000;
- background-color: #FFFFFF; 
+ background-color: #808080; 
  font-family: verdana; 
  font-size: 11px; 
- color: blue; 
+ color: white; 
   padding: 5px; 
 	height:100%;
 }
