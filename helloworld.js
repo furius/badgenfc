@@ -5,6 +5,7 @@ function getTimbrature(gname) {
 	var myTimbrature = new Timbrature();
 	var q = new StackMob.Collection.Query();
 	q.equals('group_name', gname);
+	q.setRange(0,49).orderDesc('createddate');
 	console.debug("after q.equals");
 	var esito="not evaluated";
 	myTimbrature.query(q, {
@@ -80,7 +81,9 @@ function writeTimbrature(timbList) {
 	newPage += '<table>';
 	newPage += '<tr>';
 	newPage += '<th><b>name</th>';
+	newPage += '<th><b>custom_name</th>';
 	newPage += '<th><b>action</th>';
+	newPage += '<th><b>custom_field1</th>';
 	newPage += '<th><b>date</th>';
 	newPage += '<th><b>time</th>';
 	newPage += '<th><b>gps</th>';
@@ -90,7 +93,9 @@ function writeTimbrature(timbList) {
 			var row = timbList[i];
 		   newPage +='<tr>'
 		   newPage +='<td>' + row.name + '</td>'
+		   newPage +='<td>' + row.custom_name + '</td>'
 		   newPage +='<td>' + row.action + '</td>'
+		   newPage +='<td>' + row.custom_field1 + '</td>'
 		   newPage +='<td>' + row.date + '</td>'
 		   newPage +='<td>' + row.time + '</td>'
 		   //newPage +='<td>' + row.gps '</td>'
