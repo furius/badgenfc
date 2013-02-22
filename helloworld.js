@@ -5,7 +5,7 @@ function getTimbrature(gname) {
 	var myTimbrature = new Timbrature();
 	var q = new StackMob.Collection.Query();
 	q.equals('group_name', gname);
-	q.setRange(0,49).orderDesc('createddate');
+	q.setRange(0,39).orderDesc('createddate');
 	console.debug("after q.equals");
 	var esito="not evaluated";
 	myTimbrature.query(q, {
