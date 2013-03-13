@@ -42,7 +42,7 @@ address {
   border-color: white;
 }
 th { font-family: sans-serif; color: rgb(255,255,255) ; background: rgb(72, 61 , 139) }
-td { font-family: sans-serif; background: rgb(232,232,232) }
+td { font-family: sans-serif; color: grey ; font-weight:normal; background: rgb(232,232,232) }
     .container {
         width: 300px;
         clear: both;
@@ -59,7 +59,7 @@ td { font-family: sans-serif; background: rgb(232,232,232) }
     z-index: 1000;
  background-color: #808080; 
  font-family: verdana; 
- font-size: 11px; 
+ font-size: 12px; 
  color: white; 
   padding: 5px; 
 	height:100%;
